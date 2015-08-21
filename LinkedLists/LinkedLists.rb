@@ -1,4 +1,4 @@
-class LinkedLists
+class LinkedList
 
   def initialize(data)
     @list = []
