@@ -22,7 +22,7 @@ def test_employee_test
 
   employee1 = Employee.new("Chetan", 23,"Bangalore")
   employee2 = Employee.new("Akash", 27,"Mangalore")
-  employees = [employee1, employee2]
+  employees = [emp1, emp2]
   employees.sort!
   assert_equal([employee2, employee1], employees)
 
