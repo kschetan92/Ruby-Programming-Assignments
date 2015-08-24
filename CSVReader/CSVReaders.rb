@@ -1,42 +1,48 @@
 class CSVReader
   require "csv"
   attr_accessor :name, :age, :department
-  @@employees = CSV.read("/home/chetan/Desktop/Samples/Employee.csv", :headers => true)
 
-  def self.find_by_name(employee_name)
-    @@employees.each do |employee|
-      if(employee[0] == employee_name)
-        process_results(employee)
+  def self.inherited(subclass)
+    @@subclass = subclass
+    @@csv_container = CSV.read("/home/chetan/Desktop/Samples/#{@@subclass}.csv", :headers => true)
+  end
+
+  def self.find_by_name(name)
+    @@csv_container.each do |row|
+      if(row[0] == name)
+        process_results(row)
       end
     end
   end
 
-  def self.find_by_age(employee_age)
-    @@employees.each do |employee|
-      if(employee[1] == employee_age)
-        process_results(employee)
+  def self.find_by_age(age)
+    @@csv_container.each do |row|
+      if(row[1] == age)
+        process_results(row)
       end
     end
   end
 
-  def self.find_by_department(employee_department)
-    @@employees.each do |employee|
-      if(employee[2] == employee_department)
-        process_results(employee)
+  def self.find_by_department(department)
+    @@csv_container.each do |row|
+      if(row[2] == department)
+        process_results(row)
       end
     end
   end
 
-  def self.process_results(employee)
-    employee_object = Employee.new
-    employee_object.name = employee[0]
-    employee_object.age = employee[1].to_i
-    employee_object.department = employee[2]
-    p employee_object
+  def self.process_results(row)
+    subclass_object = @@subclass.new
+    subclass_object.name = row[0]
+    subclass_object.age = row[1].to_i
+    subclass_object.department = row[2]
+    p subclass_object
   end
+
 end
 
 class Employee < CSVReader
+
 
 end
 
