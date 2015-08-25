@@ -39,10 +39,10 @@ class Students < CSVReader
 
 end
 puts
-Students.find_by_name("Mechanical")
+Students.find_by_department("Mechanical")
 
 class Employee < CSVReader
 
 end
 puts
-Employee.find_by_department("Chetan")
+Employee.find_by_name("Chetan")
