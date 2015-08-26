@@ -19,15 +19,15 @@ class CSVReader
           end
         end
       "
-
-      class_eval %Q"
+  end
+  
+    class_eval %Q"
         def #{@subclass}.process_results(row)
           subclass_object = #{@subclass}.new 
           p subclass_object
           p subclass_object = row
         end
       "
-    end
   end  
 
 end
