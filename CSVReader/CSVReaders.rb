@@ -36,10 +36,8 @@ class CSVReader
             end
           "
 
-    rescue IOError => e
+    rescue IOError
       puts "The file #{@subclass}.rb is not available in the specified path, please verify your path and try again."
-    rescue StandardError => s
-      raise
     end
   end  
 end
